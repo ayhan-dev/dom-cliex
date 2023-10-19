@@ -38,8 +38,8 @@ def export_xlsx(options, results):
         path_to_file = basepath + os.path.sep + filename
     else:
         path_to_file = filename
-    workbook = xlsxwriter.Workbook(path_to_file)
-    worksheet = workbook.add_worksheet()
+        workbook = xlsxwriter.Workbook(path_to_file)
+        worksheet = workbook.add_worksheet()
 
     header_format = workbook.add_format({"bold": 1})
     header_fields = [
@@ -87,7 +87,7 @@ def export_sqlite(options, results):
     conn = sqlite3.connect(path_to_file)
     cursor = conn.cursor()
     cursor.execute(
-        "CREATE TABLE IF NOT EXISTS bitlocker_keys(fqdn VARCHAR(255), domain VARCHAR(255), recoveryKey VARCHAR(255), volumeGuid VARCHAR(255), createdAt VARCHAR(255), organizationalUnits VARCHAR(1024));"
+ "CREATE TABLE IF NOT EXISTS bitlocker_keys(fqdn VARCHAR(255), domain VARCHAR(255), recoveryKey VARCHAR(255), volumeGuid VARCHAR(255), createdAt VARCHAR(255), organizationalUnits VARCHAR(1024));"
     )
     for computerfqdn in results.keys():
         cursor.execute(
@@ -178,9 +178,9 @@ def parseArgs():
     parser.add_argument(
         "-v",
         "--verbose",
-        default=False,
-        action="store_true",
-        help="Verbose mode. (default: False)",
+        default = False,
+        action = "store_true",
+        help = "Verbose mode. (default: False)",
     )
     parser.add_argument(
         "-q",
